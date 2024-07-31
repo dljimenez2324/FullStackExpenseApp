@@ -1,0 +1,61 @@
+/* Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Caveat:wght@400..700&display=swap');
+
+
+body {
+  background-color: rgb(48, 56, 56);
+  color:whitesmoke;
+
+  /* Fonts */
+  font-family: "Caveat", cursive;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style:normal;
+  font-size:x-large;
+}
+
+.flexCont {
+  display: flex;
+  
+}
+
+.expenseMargin {
+  margin-bottom: 3.5rem;
+}
+
+.table {
+  /* border-radius: 10px; */
+  border-color: whitesmoke;
+}
+
+.mainCont {
+  background-color: #578296;
+  border-radius: 2rem;
+  margin-top: 6%;
+  padding: 1rem;
+}
+
+.formCont {
+  background-color: #27363d;
+  margin-bottom: 1rem;
+  padding: 2rem;
+  border-radius: 1rem;
+  /* opacity: 80%; */
+}
+
+.dataStyle {
+  /* bootstrap is trying to overtake the style of the table body hence the important rule used */
+  background-color: #656b70 !important;
+}
+
+.deleteButton {
+  background-color: black;
+}
+
+thead {
+  font-size: larger;
+}
+
+/* .expenseCont {
+  background-color: #27363d;
+} */
