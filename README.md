@@ -1,20 +1,22 @@
-# <b>Mini Challenge 10 - Expense App Validation w/zod react hook forms</b>
+# <b>Challenge 3 FullStack Expense App Part 1</b>
 
 
 <b>Name: </b> David Jimenez<br>
-<b>Project: </b>Mini Challenge 10 Expense App Validation w/zod react hook forms<br>
-<b>Date: </b> 06/11/2024 <br>
+<b>Project: </b>FullStack Expense App Part 1<br>
+<b>Date: </b> 08/04/2024 <br>
 <strong>Description: </strong> & <b>Requirements: </b><br>
 
-1. Add Validation to your form with react hook forms and zod
+In this Challenge you will Create the Back End (Api) for your Expense App (expenseL) front end  we have build.
 
-2. Make it so you can add  to your List from your form using the Submit button.
+1. BackEnd must be build in .Net 8 using web api, EF core, must use Controllers. Use Swagger to test your endpoints.
 
-3. Style your app in your own unique way.
+2. Must set up  SQL Server database in Azure
 
-4. Make sure to push to github multiple times each day.
+3. All CRUD function must work, In this case you will need to add an Edit button to your front end
+
+4. Must be well designed UI, you can use Bootstrap or Chakra UI
 <br><br>
-<strong>GitHub: </strong> https://github.com/dljimenez2324/MC10ExpenseAppValidate <br><br>
+<strong>GitHub: </strong> https://github.com/dljimenez2324/FullStackExpenseApp/ <br><br>
 <br>
 
 
