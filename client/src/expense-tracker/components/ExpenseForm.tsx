@@ -11,7 +11,8 @@ import { z } from "zod";
 const schema = z
 .object({
     // note that id was   id: z.number(),    before change to nanoid
-    id: z.string().nanoid(),
+    id: z.number().default(0),
+    // id: z.number(),
     description: z.string().min(3, {message: "Need at least 3 letters"}),
     amount: z.number(),
     category: z.string()
@@ -32,12 +33,13 @@ interface ExpenseProps {
 const ExpenseForm = ({onHelpSubmit}:ExpenseProps) => {
 
     // use a useState to create an ID using nanoid notice how I'm using this form of using useState
-    const[id] = useState(nanoid());
+    // const[id] = useState(nanoid());
 
     // in order to validate our form data on submit we need the following
     const {register, handleSubmit, formState:{errors}} = useForm<FormData>({resolver:zodResolver(schema)});
 
-    
+    // onHelpSubmit()
+
     console.log("These are your errors: ", errors);
 
     // since we need to pass in props so that our app.tsx can see our data from the form.  this below is no longer needed as it only console logs and we did not make it live outside the form
@@ -74,7 +76,7 @@ const ExpenseForm = ({onHelpSubmit}:ExpenseProps) => {
         <form onSubmit={handleSubmit(onHelpSubmit)}>
             
             {/* hidden input so that form still takes in a value for the form to pass submission requirements */}
-            <input type="hidden" {...register('id')} value={id}/>
+            {/* <input type="hidden" {...register('id')} value={id}/> */}
             <div className="col mb-3">
                 <label htmlFor="description" className="form-label">Description</label>
                 <input {...register('description')} id="description" type="text" placeholder="" className="form-control" />
