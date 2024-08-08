@@ -16,7 +16,6 @@ namespace api.Controllers
         {
             _context = context;
         }
-
         
     }
 }

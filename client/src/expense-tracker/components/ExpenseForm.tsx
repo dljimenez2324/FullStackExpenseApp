@@ -1,7 +1,7 @@
 import categories from "../categories";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { nanoid } from "nanoid";
-import { useState } from "react";
+// import { nanoid } from "nanoid";
+// import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
 
@@ -93,7 +93,7 @@ const ExpenseForm = ({onHelpSubmit}:ExpenseProps) => {
                 <label htmlFor="category" className="form-label">Category</label>
                 <select {...register('category')} id="category" name="category" className="form-select">
                     <option>Select a Category</option>
-                    {/* this map makes the options show in the select cagetory field  notice the callback function */}
+                    {/* this map makes the options show in the select category field  notice the callback function */}
                     {categories.map(category => <option key={category} value={category} >{category}</option>)}
                 </select>
                 {/* error for category shows below the select field */}
