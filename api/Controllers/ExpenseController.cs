@@ -3,7 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using api.Data;
+using api.Models;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 
 namespace api.Controllers
 {
@@ -16,6 +18,14 @@ namespace api.Controllers
         {
             _context = context;
         }
+        
+        [HttpGet]
+        public async Task<IEnumerable<Expense>> GetExpense()
+        {
+            var expenses = await _context.Expenses.AsNoTracking().ToListAsync();
+            return expenses;
+        }
+
         
     }
 }

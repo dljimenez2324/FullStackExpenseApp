@@ -11,6 +11,5 @@ namespace api.Models
         public required string Description { get; set; }
         public required int Amount { get; set; }
         public required string Category { get; set; }
-        
     }
 }
