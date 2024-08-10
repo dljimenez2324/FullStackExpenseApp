@@ -7,7 +7,7 @@ namespace api.Models
 {
     public class Expense
     {
-        public required string Id { get; set; }
+        public required int Id { get; set; }
         public required string Description { get; set; }
         public required int Amount { get; set; }
         public required string Category { get; set; }

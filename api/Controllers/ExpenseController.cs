@@ -19,6 +19,7 @@ namespace api.Controllers
             _context = context;
         }
         
+        // Get all Data   GetExpense()
         [HttpGet]
         public async Task<IEnumerable<Expense>> GetExpense()
         {
@@ -26,6 +27,45 @@ namespace api.Controllers
             return expenses;
         }
 
-        
+        // Add an Expense  Create()
+        [HttpPost]
+        public async Task<IActionResult> Create (Expense expense)
+        {
+            if(!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+            await _context.AddAsync(expense);
+
+            var result = await _context.SaveChangesAsync();
+
+            if (result > 0)
+            {
+                return Ok();
+            }
+            return BadRequest();
+        }
+
+        // Delete Expense Item
+        [HttpDelete("{id:int}")]
+        public async Task<IActionResult> DeleteExpense(int id)
+        {
+            var expense = await _context.Expenses.FindAsync(id);
+            if(expense == null)
+            {
+                return NotFound();
+            }
+
+            _context.Remove(expense);
+
+            var result = await _context.SaveChangesAsync();
+
+            if (result > 0)
+            {
+                return Ok("Expense item deleted");
+            }
+
+            return BadRequest("Unable to delete expense item");
+        }
     }
 }

@@ -11,7 +11,7 @@ using api.Data;
 namespace api.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20240808045240_Initial")]
+    [Migration("20240810182421_Initial")]
     partial class Initial
     {
         /// <inheritdoc />
@@ -26,8 +26,11 @@ namespace api.Migrations
 
             modelBuilder.Entity("api.Models.Expense", b =>
                 {
-                    b.Property<string>("Id")
-                        .HasColumnType("nvarchar(450)");
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
                     b.Property<int>("Amount")
                         .HasColumnType("int");
