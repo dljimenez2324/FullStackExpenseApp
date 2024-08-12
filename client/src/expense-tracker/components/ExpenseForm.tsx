@@ -40,7 +40,7 @@ const ExpenseForm = ({onHelpSubmit}:ExpenseProps) => {
 
     // onHelpSubmit()
 
-    console.log("These are your errors: ", errors);
+    // console.log("These are your errors: ", errors);
 
     // since we need to pass in props so that our app.tsx can see our data from the form.  this below is no longer needed as it only console logs and we did not make it live outside the form
     // // make a helper function to show the Field Values after a submission to know how the data looks

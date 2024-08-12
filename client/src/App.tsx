@@ -1,32 +1,70 @@
 // remember to add Zod and react hook forms to ExpenseForm
 
-import { useState } from "react";
+import axios, { CanceledError } from "axios";
+import { useEffect, useState } from "react";
+import { BASE_URL } from "./expense-tracker/constant";
 import ExpenseList from "./expense-tracker/components/ExpenseList";
 import ExpenseFilter from "./expense-tracker/components/ExpenseFilter"
 import ExpenseForm from "./expense-tracker/components/ExpenseForm"
 // import { nanoid } from "nanoid";
 
+
+//  this interface is how we will structure our Expense data
+export interface Expense {
+  id: number;
+  description: string;
+  amount: number;
+  category: string;
+}
+
 const App = () => {
 
       // useStates created to hold our dummy data Expense Array and selected category from the form select and filter
       const [selectedCategory, setSelectedCategory] = useState('');
+      const [data, setData] = useState<Expense[]>([]);
+      const [error, setError] = useState("");
       
       const [dummyExpensesArray, setDummyExpensesArray] = useState([
         {id: 1, description: 'Electricity', amount: 400, category: 'Utilities'}
       ])
 
       // lets make a variable with a ternary operator   we will then use our selectedCategory as a boolean like filter through our dummyExpenseArray
-      const visibleExpense = selectedCategory ? dummyExpensesArray.filter(e=>e.category === selectedCategory) : dummyExpensesArray;
+      // const visibleExpense = selectedCategory ? dummyExpensesArray.filter(e=>e.category === selectedCategory) : dummyExpensesArray;
+      // now changed to account for the api data
+      const visibleExpense = selectedCategory ? data.filter(e=>e.category === selectedCategory) : data;
 
 
+      
+      // Get all Expense api function
+      const fetchAllExpenses = () => {
+        axios
+        .get(`${BASE_URL}GetAllExpenses`)
+        .then((response) => {
+          setData(response.data);
+        })
+        .catch((error) => {
+          if(error instanceof CanceledError){
+              console.log("Request was canceled");
+          } else{
+            console.log("The error is " + error.message);
+            setError(error);
+            }
+        })
+        console.log(`All Data: ${data}`);
+      }
+      
       // delete function
       const handleDelete = (id:number) => {
         // remember that filter will return everything else that is not the id that we pass through
         setDummyExpensesArray(dummyExpensesArray.filter(expense => expense.id !== id ))
       }
 
-
-
+      useEffect(() => {
+        
+        fetchAllExpenses();
+        
+      }, [])
+      
 
   return (
     <>
@@ -48,7 +86,9 @@ const App = () => {
             <div className="container">
               <div className="col">
                 <h2 className="text-center expenseMargin">Expense Table</h2>
-                {/* table of data */}
+                {/* table of data using mini challenge 10 dummy data filtered by expense filter*/}
+                {/* <div className="m-5"><ExpenseList expenses={visibleExpense} onDelete={handleDelete}/></div> */}
+                {/* updated to use api */}
                 <div className="m-5"><ExpenseList expenses={visibleExpense} onDelete={handleDelete}/></div>
               </div>
             </div>

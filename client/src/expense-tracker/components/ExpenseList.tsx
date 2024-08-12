@@ -1,11 +1,9 @@
+import axios from "axios";
+import { BASE_URL } from "../constant";
+import { useState } from "react";
+import { Expense } from "../../App";
 
-//  this interface is how we will structure our Expense data
-interface Expense {
-    id: number;
-    description: string;
-    amount: number;
-    category: string;
-}
+
 
 // here are the props that we need to use to hold the structured Expense data objects
 interface ExpenseProps {
@@ -14,6 +12,15 @@ interface ExpenseProps {
 }
 
 const ExpenseList = ({expenses, onDelete}:ExpenseProps) => {
+
+    // useStates here
+    
+
+
+    // Helper functions here
+    
+
+
 
     // if our array is empty we can have a separate return that gives null
     if(expenses.length == 0)
@@ -40,6 +47,8 @@ const ExpenseList = ({expenses, onDelete}:ExpenseProps) => {
                     <td className="dataStyle">$ {expense.amount.toFixed(2)}</td>
                     <td className="dataStyle">{expense.category}</td>
                     <td className="dataStyle text-center">
+
+                        <button className="btn btn-outline-warning deleteButton" onClick={() => onDelete(expense.id)}>Update</button>
                         <button className="btn btn-outline-danger deleteButton" onClick={() => onDelete(expense.id)}>Delete</button>
                     </td>
 

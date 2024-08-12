@@ -1,0 +1,1 @@
+export const BASE_URL = "http://localhost:5216/api/Expense/"

@@ -50,6 +50,8 @@ body {
 
 .deleteButton {
   background-color: black;
+  margin-left: .25rem;
+  margin-right: .25rem;
 }
 
 thead {
