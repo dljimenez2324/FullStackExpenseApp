@@ -59,6 +59,7 @@ const App = () => {
         setDummyExpensesArray(dummyExpensesArray.filter(expense => expense.id !== id ))
       }
 
+      // useEffect to fun an api call for the fetch all data
       useEffect(() => {
         
         fetchAllExpenses();
