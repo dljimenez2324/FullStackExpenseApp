@@ -1,6 +1,7 @@
 // import axios from "axios";
 // import { BASE_URL } from "../constant";
 // import { useState } from "react";
+import { useState } from "react";
 import { Expense } from "../../App";
 
 
@@ -15,13 +16,22 @@ interface ExpenseProps {
 const ExpenseList = ({expenses, onDelete}:ExpenseProps) => {
 
     // useStates here
-    
+    const [updatingId, setUpdatingId] = useState<number | null>(null);
+    const [updatingData, setUpdatingData] = useState<Expense | null>(null);
 
+    // Helper functions here  start editing, stop editing and complete editing as the name updateExpense
+    const startUpdate = () => {
 
-    // Helper functions here
-    
+    }
 
+    const stopUpdate = () => {
+        setUpdatingId(null);
+        setUpdatingData(null);
+    }
 
+    const updateExpense = () => {
+
+    }
 
     // if our array is empty we can have a separate return that gives null
     if(expenses.length == 0)
