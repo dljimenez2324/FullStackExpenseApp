@@ -10,18 +10,18 @@ import { Expense } from "../../App";
 interface ExpenseProps {
     expenses: Expense [];
     onDelete: (id:number) => void
-    
+    fetchData: () => void;
 }
 
-const ExpenseList = ({expenses, onDelete}:ExpenseProps) => {
+const ExpenseList = ({expenses, onDelete, fetchData}:ExpenseProps) => {
 
     // useStates here
     const [updatingId, setUpdatingId] = useState<number | null>(null);
     const [updatingData, setUpdatingData] = useState<Expense | null>(null);
 
     // Helper functions here  start editing, stop editing and complete editing as the name updateExpense
-    const startUpdate = () => {
-
+    const startUpdate = (id:number) => {
+        setUpdatingId(id);
     }
 
     const stopUpdate = () => {
