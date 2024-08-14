@@ -24,9 +24,9 @@ const App = () => {
       const [data, setData] = useState<Expense[]>([]);
       const [error, setError] = useState("");
       
-      const [dummyExpensesArray, setDummyExpensesArray] = useState([
-        {id: 1, description: 'Electricity', amount: 400, category: 'Utilities'}
-      ])
+      // const [dummyExpensesArray, setDummyExpensesArray] = useState([
+      //   {id: 1, description: 'Electricity', amount: 400, category: 'Utilities'}
+      // ])
 
       // lets make a variable with a ternary operator   we will then use our selectedCategory as a boolean like filter through our dummyExpenseArray
       // const visibleExpense = selectedCategory ? dummyExpensesArray.filter(e=>e.category === selectedCategory) : dummyExpensesArray;
@@ -56,8 +56,21 @@ const App = () => {
       // delete function
       const handleDelete = (id:number) => {
         // remember that filter will return everything else that is not the id that we pass through
-        setDummyExpensesArray(dummyExpensesArray.filter(expense => expense.id !== id ))
-      }
+        // setDummyExpensesArray(dummyExpensesArray.filter(expense => expense.id !== id ))
+        // this below will only show in the dom / front ent but will not pass through  to the api
+        // setData(data.filter(expense => expense.id !== id ))
+
+        axios
+            .delete(`${BASE_URL}Delete/${id}`)
+            .then(() => {
+                setData(data.filter(expense => expense.id !== id));
+                fetchAllExpenses();
+            })
+            .catch((error) => {
+                console.log(error)
+            });
+
+      };
 
       // useEffect to fun an api call for the fetch all data
       useEffect(() => {
@@ -78,7 +91,9 @@ const App = () => {
             <div className="container formCont col-4">
               
                 <h2 className="text-center">New Expense</h2>
-                <div className="m-4 formStyle"><ExpenseForm onHelpSubmit={expense => setDummyExpensesArray([...dummyExpensesArray, {...expense, id: dummyExpensesArray.length + 1}])} /></div>
+                {/* <div className="m-4 formStyle"><ExpenseForm onHelpSubmit={expense => setDummyExpensesArray([...dummyExpensesArray, {...expense, id: dummyExpensesArray.length + 1}])} /></div> */}
+                {/* <div className="m-4 formStyle"><ExpenseForm fetchExpenses={(expense) => setData([...data, {...expense, id: data.length + 1}])} /></div> */}
+                <div className="m-4 formStyle"><ExpenseForm fetchExpenses={fetchAllExpenses} /></div>
                 {/* Expense Table filter option */}
                 <h4 className="m-4">Selected Category</h4>
                 <div className="m-4 ms-4"><ExpenseFilter onSelectedCategory={category => setSelectedCategory(category)}/></div>

@@ -9,6 +9,7 @@ import { Expense } from "../../App";
 interface ExpenseProps {
     expenses: Expense [];
     onDelete: (id:number) => void
+    
 }
 
 const ExpenseList = ({expenses, onDelete}:ExpenseProps) => {
@@ -48,6 +49,7 @@ const ExpenseList = ({expenses, onDelete}:ExpenseProps) => {
                     <td className="dataStyle">{expense.category}</td>
                     <td className="dataStyle text-center">
 
+                        {/* need to change the edit button function */}
                         <button className="btn btn-outline-warning deleteButton" onClick={() => onDelete(expense.id)}>Update</button>
                         <button className="btn btn-outline-danger deleteButton" onClick={() => onDelete(expense.id)}>Delete</button>
                     </td>
