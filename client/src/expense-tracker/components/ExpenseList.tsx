@@ -12,7 +12,9 @@ import { BASE_URL } from "../constant";
 interface ExpenseProps {
     expenses: Expense [];
     onDelete: (id:number) => void
-    fetchData: (React.Dispatch<React.SetStateAction<Expense[]>>);
+    // fetchData: (React.Dispatch<React.SetStateAction<Expense[]>>);
+    fetchData: (expense:Expense[]) => void;
+    // fetchData: () => void;
 }
 
 const ExpenseList = ({expenses, onDelete, fetchData}:ExpenseProps) => {
@@ -36,7 +38,8 @@ const ExpenseList = ({expenses, onDelete, fetchData}:ExpenseProps) => {
             .put(`${BASE_URL}Edit/${id}`, updatingData)
             .then(()=>{
                 // setUpdatingData(expenses.map(exp => exp.id === id ? updatingData : exp))
-                fetchData(expenses.map(exp => exp.id === id ? updatingData : exp))
+                // fetchData(expenses.map(exp => exp.id === id ? updatingData : exp))
+                // fetchData({...updatingData })
             })
     }
 
