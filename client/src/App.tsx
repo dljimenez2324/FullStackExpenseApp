@@ -105,7 +105,7 @@ const App = () => {
                 {/* table of data using mini challenge 10 dummy data filtered by expense filter*/}
                 {/* <div className="m-5"><ExpenseList expenses={visibleExpense} onDelete={handleDelete}/></div> */}
                 {/* updated to use api */}
-                <div className="m-5"><ExpenseList expenses={visibleExpense} onDelete={handleDelete} fetchData={fetchAllExpenses}/></div>
+                <div className="m-5"><ExpenseList expenses={visibleExpense} onDelete={handleDelete} fetchData={setData}/></div>
               </div>
             </div>
           </div>

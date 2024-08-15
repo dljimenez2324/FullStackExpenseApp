@@ -3,6 +3,8 @@
 // import { useState } from "react";
 import { useState } from "react";
 import { Expense } from "../../App";
+import axios from "axios";
+import { BASE_URL } from "../constant";
 
 
 
@@ -10,7 +12,7 @@ import { Expense } from "../../App";
 interface ExpenseProps {
     expenses: Expense [];
     onDelete: (id:number) => void
-    fetchData: () => void;
+    fetchData: (React.Dispatch<React.SetStateAction<Expense[]>>);
 }
 
 const ExpenseList = ({expenses, onDelete, fetchData}:ExpenseProps) => {
@@ -29,8 +31,13 @@ const ExpenseList = ({expenses, onDelete, fetchData}:ExpenseProps) => {
         setUpdatingData(null);
     }
 
-    const updateExpense = () => {
-
+    const updateExpense = (id:number) => {
+        axios
+            .put(`${BASE_URL}Edit/${id}`, updatingData)
+            .then(()=>{
+                // setUpdatingData(expenses.map(exp => exp.id === id ? updatingData : exp))
+                fetchData(expenses.map(exp => exp.id === id ? updatingData : exp))
+            })
     }
 
     // if our array is empty we can have a separate return that gives null
