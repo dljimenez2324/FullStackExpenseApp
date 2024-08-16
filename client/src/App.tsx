@@ -31,6 +31,9 @@ const App = () => {
       // lets make a variable with a ternary operator   we will then use our selectedCategory as a boolean like filter through our dummyExpenseArray
       // const visibleExpense = selectedCategory ? dummyExpensesArray.filter(e=>e.category === selectedCategory) : dummyExpensesArray;
       // now changed to account for the api data
+
+      // per discussion with Neng, we see that visibleExpense isnt needed as its already handled with ExpenseFilter.tsx
+      // then discussion with Neo, Jose and Jacob, we found we could still use this to pass in our filtered data so that our table will filter out unselected categories or keep all
       const visibleExpense = selectedCategory ? data.filter(e=>e.category === selectedCategory) : data;
 
 
@@ -105,7 +108,9 @@ const App = () => {
                 {/* table of data using mini challenge 10 dummy data filtered by expense filter*/}
                 {/* <div className="m-5"><ExpenseList expenses={visibleExpense} onDelete={handleDelete}/></div> */}
                 {/* updated to use api */}
-                <div className="m-5"><ExpenseList expenses={visibleExpense} onDelete={handleDelete} fetchData={data}/></div>
+                {/* older form of ExpenseList */}
+                {/* <div className="m-5"><ExpenseList expenses={visibleExpense} onDelete={handleDelete} fetchData={fetchAllExpenses}/></div> */}
+                <div className="m-5"><ExpenseList expenses={visibleExpense} onDelete={handleDelete} fetchData={fetchAllExpenses} category={selectedCategory}/></div>
               </div>
             </div>
           </div>
