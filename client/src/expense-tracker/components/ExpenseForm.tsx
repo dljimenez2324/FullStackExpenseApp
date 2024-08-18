@@ -59,6 +59,7 @@ const ExpenseForm = ({ fetchExpenses, addedData }: ExpenseProps) => {
         fetchExpenses();
       })
       .catch((error) => console.log(error));
+      
   };
 
   return (

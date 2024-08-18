@@ -110,7 +110,7 @@ const App = () => {
                 {/* updated to use api */}
                 {/* older form of ExpenseList */}
                 {/* <div className="m-5"><ExpenseList expenses={visibleExpense} onDelete={handleDelete} fetchData={fetchAllExpenses}/></div> */}
-                <div className="m-5"><ExpenseList expenses={visibleExpense} onDelete={handleDelete} fetchData={fetchAllExpenses} category={selectedCategory}/></div>
+                <div className="m-4"><ExpenseList expenses={visibleExpense} onDelete={handleDelete} fetchData={fetchAllExpenses} category={selectedCategory}/></div>
               </div>
             </div>
           </div>
