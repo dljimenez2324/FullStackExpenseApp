@@ -3,7 +3,7 @@
 
 <b>Name: </b> David Jimenez<br>
 <b>Project: </b>FullStack Expense App Part 1<br>
-<b>Date: </b> 08/04/2024 <br>
+<b>Date: </b> 08/16/2024 <br>
 <strong>Description: </strong> & <b>Requirements: </b><br>
 
 In this Challenge you will Create the Back End (Api) for your Expense App (expenseL) front end  we have build.
@@ -23,5 +23,5 @@ In this Challenge you will Create the Back End (Api) for your Expense App (expen
 <strong>Notes:<strong/><br>
 *   
 
-<b>Peer Reviewed by: </b> name here <br>
-<b>Comments: </b>   description here
+<b>Peer Reviewed by: </b> Neng, Jose, Jacob, Neo <br>
+<b>Comments: </b>   Too many to type... see commit comments.
