@@ -1,6 +1,4 @@
-// import axios from "axios";
-// import { BASE_URL } from "../constant";
-// import { useState } from "react";
+
 import { useState } from "react";
 import { Expense } from "../../App";
 import axios from "axios";
@@ -10,8 +8,6 @@ import { BASE_URL } from "../constant";
 interface ExpenseProps {
     expenses: Expense[];
     onDelete: (id: number) => void;
-    // fetchData: (React.Dispatch<React.SetStateAction<Expense[]>>);
-    // fetchData: (expense:Expense[]) => void;
     fetchData: () => void;
     category: string;
 }
@@ -22,9 +18,9 @@ const ExpenseList = ({
     onDelete,
     fetchData,
 }: ExpenseProps) => {
+
     // useStates here
     const [updatingId, setUpdatingId] = useState<number | null>(null);
-    // const [updatingData, setUpdatingData] = useState<Expense | null>(null);
     const [updatingData, setUpdatingData] = useState<Expense>({
         id: 0,
         description: "",
@@ -32,7 +28,6 @@ const ExpenseList = ({
         category: ""
     });
     const [savedData, setSavedData] = useState<Expense[]>([]);
-    const [total, setTotal] = useState<Expense[]>([]);
 
     // Helper functions here  start editing, stop editing and complete editing as the name updateExpense
     const startUpdate = (id: number) => {
@@ -60,25 +55,18 @@ const ExpenseList = ({
                 .put(`${BASE_URL}Edit/${id}`, updatingData)
                 .then(() => {
                     fetchData();
+                    //// maybe try if need the setSavedData useState
                     // setSavedData(
                     //     expenses.map((exp) => (exp.id === id ? updatingData : exp))
                     // );
 
-                    // fetchData(expenses.map(exp => exp.id === id ? updatingData : exp))
-                    // fetchData({...updatingData} )
                 })
                 .catch((error) => console.log(error.message));
-                // .finally(() => {
-                //     fetchData();
-                // });
-                
+     
         }
         stopUpdate();
 
-        // setTimeout(() => {
-        //     console.log("Saving Data");
-        // }, 500);
-        // fetchData();
+        
     };
 
     // if our array has some data then return this table
