@@ -59,21 +59,26 @@ const ExpenseList = ({
             axios
                 .put(`${BASE_URL}Edit/${id}`, updatingData)
                 .then(() => {
-                    setSavedData(
-                        expenses.map((exp) => (exp.id === id ? updatingData : exp))
-                    );
+                    fetchData();
+                    // setSavedData(
+                    //     expenses.map((exp) => (exp.id === id ? updatingData : exp))
+                    // );
+
                     // fetchData(expenses.map(exp => exp.id === id ? updatingData : exp))
                     // fetchData({...updatingData} )
                 })
                 .catch((error) => console.log(error.message));
+                // .finally(() => {
+                //     fetchData();
+                // });
                 
         }
-        // stopUpdate();
+        stopUpdate();
 
-        setTimeout(() => {
-            console.log("Saving Data");
-        }, 500);
-        fetchData();
+        // setTimeout(() => {
+        //     console.log("Saving Data");
+        // }, 500);
+        // fetchData();
     };
 
     // if our array has some data then return this table
