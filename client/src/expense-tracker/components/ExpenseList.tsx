@@ -66,7 +66,14 @@ const ExpenseList = ({
                     // fetchData({...updatingData} )
                 })
                 .catch((error) => console.log(error.message));
+                
         }
+        // stopUpdate();
+
+        setTimeout(() => {
+            console.log("Saving Data");
+        }, 500);
+        fetchData();
     };
 
     // if our array has some data then return this table
